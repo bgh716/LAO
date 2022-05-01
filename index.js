@@ -13,6 +13,7 @@ client.connect(err => {
 });
 
 app.get('/', (req, res) => {
+  console.log(collection)
   res.send('Hello World!')
 })
 
