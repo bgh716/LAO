@@ -13,8 +13,7 @@ client.connect(err => {
 });
 
 app.get('/', (req, res) => {
-  console.log(collection)
-  res.send('Hello World!')
+  res.send(collection);
 })
 
 app.listen(port, () => {
