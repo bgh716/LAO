@@ -5,7 +5,6 @@ const fs = require('fs');
 const ejs = require('ejs');
 const assert = require('assert');
 const port = process.env.PORT || 3000
-
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
@@ -89,9 +88,9 @@ app.get('/', (req, res) => {
 app.get('/shop', (req, res) => {
   Maris.find({id:"TEMPO"}, function (err, docs) {
     console.log(err);
-    docs = docs[0];
-    console.log(docs["Moon's Breath"]);
-    res.render("shop", docs);
+    const tmpObj = docs[0];
+    console.log(tmpObj["Moon's Breath"]);
+    res.render("shop", {data: tmpObj});
   });
 })
 
