@@ -2,8 +2,12 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const fs = require('fs');
-assert = require('assert');
+const ejs = require('ejs');
+const assert = require('assert');
 const port = process.env.PORT || 3000
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 //MONGOOSE CONNECTION
 const mongoose = require('mongoose')
@@ -76,9 +80,18 @@ const Maris = mongoose.model('Maris', maris);
 app.get('/', (req, res) => {
   Maris.find({id:"TEMPO"}, function (err, docs) {
     console.log(err);
-    docs = docs[0]
+    docs = docs[0];
     console.log(docs["Moon's Breath"]);
     res.send(docs);
+  });
+})
+
+app.get('/shop', (req, res) => {
+  Maris.find({id:"TEMPO"}, function (err, docs) {
+    console.log(err);
+    docs = docs[0];
+    console.log(docs["Moon's Breath"]);
+    res.render("shop", docs);
   });
 })
 
