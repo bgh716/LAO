@@ -87,9 +87,10 @@ app.get('/', (req, res) => {
 
 app.get('/shop', (req, res) => {
   Maris.find({id:"TEMPO"}, function (err, docs) {
-    console.log(err);
+    if (err){
+      console.log(err);
+    }
     const tmpObj = docs[0];
-    console.log(tmpObj["Moon's Breath"]);
     res.render("shop", {data: tmpObj});
   });
 })

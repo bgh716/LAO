@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -11,7 +16,6 @@
              dataType:"json",
              success:function(res){//result변수로 응답정보가 전달됨
                console.log(res);
-               $("body").append(res["Moon's Breath"]);
                $("#1").text('Destruction Stone Fragment: ' + res["Moon's Breath"]);
              }
            });//ajax
@@ -21,33 +25,120 @@
      <title>ratio</title>
   </head>
   <body>
-     <h1 id="1"> Destruction Stone Fragment: <%= data["Destruction Stone Fragment"] %></h1>
-     <h1> Guardian Stone Fragment: <%= data["Guardian Stone Fragment"] %></h1>
-     <h1> Destruction Stone: <%= data["Destruction Stone"] %></h1>
-     <h1> Guardian Stone: <%= data["Guardian Stone"] %></h1>
-     <h1> Guardian Stone Crystal: <%= data["Guardian Stone Crystal"] %></h1>
-     <h1> Destruction Stone Crystal: <%= data["Destruction Stone Crystal"] %></h1>
-     <h1> Simple Oreha Fusion Material: <%= data["Simple Oreha Fusion Material"] %></h1>
-     <h1> Harmony Shard Pouch (S): <%= data["Harmony Shard Pouch (S)"] %></h1>
-     <h1> Life Shard Pouch (S): <%= data["Life Shard Pouch (S)"] %></h1>
-     <h1> Honor Shard Pouch (S): <%= data["Honor Shard Pouch (S)"] %></h1>
-     <h1> Solar Grace: <%= data["Solar Grace"] %></h1>
-     <h1> Caldarr Fusion Material: <%= data["Caldarr Fusion Material"] %></h1>
-     <h1> Basic Oreha Fusion Material: <%= data["Basic Oreha Fusion Material"] %></h1>
-     <h1> Harmony Leapstone: <%= data["Harmony Leapstone"] %></h1>
-     <h1> Harmony Shard Pouch (M): <%= data["Harmony Shard Pouch (M)"] %></h1>
-     <h1> Life Leapstone: <%= data["Life Leapstone"] %></h1>
-     <h1> Life Shard Pouch (M): <%= data["Life Shard Pouch (M)"] %></h1>
-     <h1> Honor Leapstone: <%= data["Honor Leapstone"] %></h1>
-     <h1> Honor Shard Pouch (M): <%= data["Honor Shard Pouch (M)"] %></h1>
-     <h1> Great Honor Leapstone: <%= data["Great Honor Leapstone"] %></h1>
-     <h1> Solar Blessing: <%= data["Solar Blessing"] %></h1>
-     <h1> Star's Breath: <%= data["Star's Breath"] %></h1>
-     <h1> Harmony Shard Pouch (L): <%= data["Harmony Shard Pouch (L)"] %></h1>
-     <h1> Moon's Breath: <%= data["Moon's Breath"] %></h1>
-     <h1> Life Shard Pouch (L): <%= data["Life Shard Pouch (L)"] %></h1>
-     <h1> Honor Shard Pouch (L): <%= data["Honor Shard Pouch (L)"] %></h1>
-     <h1> Solar Protection: <%= data["Solar Protection"] %></h1>
     <button id="ajaxBtn">Press</button>
+    <table style="width:100%">
+      <tr>
+        <th>item</th>
+        <th>price</th>
+      </tr>
+      <tr>
+        <td id="Destruction Stone Fragment">Destruction Stone Fragment</td>
+        <td id="Destruction Stone FragmentP"> <%= data["Destruction Stone Fragment"] %> </td>
+      </tr>
+      <tr>
+        <td id="Guardian Stone Fragment">Guardian Stone Fragment</td>
+        <td id="Guardian Stone FragmentP"> <%= data["Guardian Stone Fragment"] %> </td>
+      </tr>
+      <tr>
+        <td id="Destruction Stone">Destruction Stone</td>
+        <td id="Destruction StoneP"> <%= data["Destruction Stone"] %> </td>
+      </tr>
+      <tr>
+        <td id="Guardian Stone">Guardian Stone</td>
+        <td id="Guardian StoneP"> <%= data["Guardian Stone"] %> </td>
+      </tr>
+      <tr>
+        <td id="Guardian Stone Crystal">Guardian Stone Crystal</td>
+        <td id="Guardian Stone CrystalP"> <%= data["Guardian Stone Crystal"] %> </td>
+      </tr>
+      <tr>
+        <td id="Destruction Stone Crystal">Destruction Stone Crystal</td>
+        <td id="Destruction Stone CrystalP"> <%= data["Destruction Stone Crystal"] %> </td>
+      </tr>
+      <tr>
+        <td id="Simple Oreha Fusion Material">Simple Oreha Fusion Material</td>
+        <td id="Simple Oreha Fusion MaterialP"> <%= data["Simple Oreha Fusion Material"] %> </td>
+      </tr>
+      <tr>
+        <td id="Harmony Shard Pouch (S)">Harmony Shard Pouch (S)</td>
+        <td id="Harmony Shard Pouch (S)P"> <%= data["Harmony Shard Pouch (S)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Life Shard Pouch (S)">Life Shard Pouch (S)</td>
+        <td id="Life Shard Pouch (S)P"> <%= data["Life Shard Pouch (S)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Honor Shard Pouch (S)">Honor Shard Pouch (S)</td>
+        <td id="Honor Shard Pouch (S)P"> <%= data["Honor Shard Pouch (S)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Solar Grace">Solar Grace</td>
+        <td id="Solar GraceP"> <%= data["Solar Grace"] %> </td>
+      </tr>
+      <tr>
+        <td id="Caldarr Fusion Material">Caldarr Fusion Material</td>
+        <td id="Caldarr Fusion MaterialP"> <%= data["Caldarr Fusion Material"] %> </td>
+      </tr>
+      <tr>
+        <td id="Basic Oreha Fusion Material">Basic Oreha Fusion Material</td>
+        <td id="Basic Oreha Fusion MaterialP"> <%= data["Basic Oreha Fusion Material"] %> </td>
+      </tr>
+      <tr>
+        <td id="Harmony Leapstone">Harmony Leapstone</td>
+        <td id="Harmony LeapstoneP"> <%= data["Harmony Leapstone"] %> </td>
+      </tr>
+      <tr>
+        <td id="Harmony Shard Pouch (M)">Harmony Shard Pouch (M)</td>
+        <td id="Harmony Shard Pouch (M)P"> <%= data["Harmony Shard Pouch (M)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Life Leapstone">Life Leapstone</td>
+        <td id="Life LeapstoneP"> <%= data["Life Leapstone"] %> </td>
+      </tr>
+      <tr>
+        <td id="Life Shard Pouch (M)">Life Shard Pouch (M)</td>
+        <td id="Life Shard Pouch (M)P"> <%= data["Life Shard Pouch (M)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Honor Leapstone">Honor Leapstone</td>
+        <td id="Honor LeapstoneP"> <%= data["Honor Leapstone"] %> </td>
+      </tr>
+      <tr>
+        <td id="Honor Shard Pouch (M)">Honor Shard Pouch (M)</td>
+        <td id="Honor Shard Pouch (M)P"> <%= data["Honor Shard Pouch (M)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Great Honor Leapstone">Great Honor Leapstone</td>
+        <td id="Great Honor LeapstoneP"> <%= data["Great Honor Leapstone"] %> </td>
+      </tr>
+      <tr>
+        <td id="Solar Blessing">Solar Blessing</td>
+        <td id="Solar BlessingP"> <%= data["Solar Blessing"] %> </td>
+      </tr>
+      <tr>
+        <td id="Star's Breath">Star's Breath</td>
+        <td id="Star's BreathP"> <%= data["Star's Breath"] %> </td>
+      </tr>
+      <tr>
+        <td id="Harmony Shard Pouch (L)">Harmony Shard Pouch (L)</td>
+        <td id="Harmony Shard Pouch (L)P"> <%= data["Harmony Shard Pouch (L)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Moon's Breath">Moon's Breath</td>
+        <td id="Moon's BreathP"> <%= data["Moon's Breath"] %> </td>
+      </tr>
+      <tr>
+        <td id="Life Shard Pouch (L)">Life Shard Pouch (L)</td>
+        <td id="Life Shard Pouch (L)P"> <%= data["Life Shard Pouch (L)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Honor Shard Pouch (L)">Honor Shard Pouch (L)</td>
+        <td id="Honor Shard Pouch (L)P"> <%= data["Honor Shard Pouch (L)"] %> </td>
+      </tr>
+      <tr>
+        <td id="Solar Protection">Solar Protection</td>
+        <td id="Solar ProtectionP"> <%= data["Solar Protection"] %> </td>
+      </tr>
+    </table>
   </body>
 </html>
