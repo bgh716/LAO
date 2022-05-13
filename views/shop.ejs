@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>연습</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	     $(document).ready(function() {
+         $("#ajaxBtn").click(function(){
+           $.ajax({
+             type:"get",
+             url:"http://localhost:3000",
+             dataType:"json",
+             success:function(res){//result변수로 응답정보가 전달됨
+               console.log(res);
+               $("body").append(res["Moon's Breath"]);
+               $("#1").text('Destruction Stone Fragment: ' + res["Moon's Breath"]);
+             }
+           });//ajax
+         });//click
+       });//ready
+     </script>
+     <title>ratio</title>
   </head>
   <body>
-    <% for (let i = 0; i < 5 ; i ++) { %>
-    <h1><%= data["Moon's Breath"] %></h1>
-    <% } %>
+     <h1 id="1"> Destruction Stone Fragment: <%= data["Destruction Stone Fragment"] %></h1>
+     <h1> Guardian Stone Fragment: <%= data["Guardian Stone Fragment"] %></h1>
+     <h1> Destruction Stone: <%= data["Destruction Stone"] %></h1>
+     <h1> Guardian Stone: <%= data["Guardian Stone"] %></h1>
+     <h1> Guardian Stone Crystal: <%= data["Guardian Stone Crystal"] %></h1>
+     <h1> Destruction Stone Crystal: <%= data["Destruction Stone Crystal"] %></h1>
+     <h1> Simple Oreha Fusion Material: <%= data["Simple Oreha Fusion Material"] %></h1>
+     <h1> Harmony Shard Pouch (S): <%= data["Harmony Shard Pouch (S)"] %></h1>
+     <h1> Life Shard Pouch (S): <%= data["Life Shard Pouch (S)"] %></h1>
+     <h1> Honor Shard Pouch (S): <%= data["Honor Shard Pouch (S)"] %></h1>
+     <h1> Solar Grace: <%= data["Solar Grace"] %></h1>
+     <h1> Caldarr Fusion Material: <%= data["Caldarr Fusion Material"] %></h1>
+     <h1> Basic Oreha Fusion Material: <%= data["Basic Oreha Fusion Material"] %></h1>
+     <h1> Harmony Leapstone: <%= data["Harmony Leapstone"] %></h1>
+     <h1> Harmony Shard Pouch (M): <%= data["Harmony Shard Pouch (M)"] %></h1>
+     <h1> Life Leapstone: <%= data["Life Leapstone"] %></h1>
+     <h1> Life Shard Pouch (M): <%= data["Life Shard Pouch (M)"] %></h1>
+     <h1> Honor Leapstone: <%= data["Honor Leapstone"] %></h1>
+     <h1> Honor Shard Pouch (M): <%= data["Honor Shard Pouch (M)"] %></h1>
+     <h1> Great Honor Leapstone: <%= data["Great Honor Leapstone"] %></h1>
+     <h1> Solar Blessing: <%= data["Solar Blessing"] %></h1>
+     <h1> Star's Breath: <%= data["Star's Breath"] %></h1>
+     <h1> Harmony Shard Pouch (L): <%= data["Harmony Shard Pouch (L)"] %></h1>
+     <h1> Moon's Breath: <%= data["Moon's Breath"] %></h1>
+     <h1> Life Shard Pouch (L): <%= data["Life Shard Pouch (L)"] %></h1>
+     <h1> Honor Shard Pouch (L): <%= data["Honor Shard Pouch (L)"] %></h1>
+     <h1> Solar Protection: <%= data["Solar Protection"] %></h1>
+    <button id="ajaxBtn">Press</button>
   </body>
 </html>
