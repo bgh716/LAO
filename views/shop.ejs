@@ -39,10 +39,10 @@ table, th, td {
       </tr>
       <tr>
         <td id="i1"><%= data.i1["name"] %></td>
-        <td id="Destruction Stone FragmentP"> <%= data.i1["price"] %> </td>
-        <td>600</td>
-        <td>120</td>
-        <td id="Destruction Stone FragmentR"> <%= calFunc(cryP, data.i1["price"]/10, 120/600) %> </td>
+        <td id="i1P"> <%= data.i1["price"] %> </td>
+        <td><%= info.i1["quantity"] %></td>
+        <td><%= info.i1["cprice"] %></td>
+        <td id="i1R"> <%= calFunc(cryP, data.i1["price"]/info.i1["bundle"], info.i1["cprice"]/info.i1["quantity"]) %> </td>
       </tr>
       <!--
       <tr>

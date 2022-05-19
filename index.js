@@ -162,6 +162,9 @@ function ratio(crystalP, itemGP, itemCP){
   return rate;
 }
 
+const infoFile = fs.readFileSync('temp/iteminfo.json', 'utf8');
+const infoObj = JSON.parse(infoFile);
+
 app.get('/', (req, res) => {
   Maris.find({id:"TEMPO"}, function (err, docs) {
     docs = docs[0];
@@ -175,7 +178,7 @@ app.get('/shop', (req, res) => {
       console.log(err);
     }
     const tmpObj = docs[0];
-    res.render("shop", {data: tmpObj, calFunc: ratio});
+    res.render("shop", {data: tmpObj, calFunc: ratio, info: infoObj});
   });
 })
 
