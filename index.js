@@ -44,43 +44,127 @@ client.connect(err => {
 */
 
 var maris = mongoose.Schema({
-  "id" : String,
-  "crystal" : Number,
-  "Destruction Stone Fragment" : Number,
-  "Guardian Stone Fragment" : Number,
-  "Destruction Stone" : Number,
-  "Guardian Stone" : Number,
-  "Guardian Stone Crystal" : Number,
-  "Destruction Stone Crystal" : Number,
-  "Simple Oreha Fusion Material" : Number,
-  "Harmony Shard Pouch (S)" : Number,
-  "Life Shard Pouch (S)" : Number,
-  "Honor Shard Pouch (S)" : Number,
-  "Solar Grace" : Number,
-  "Caldarr Fusion Material" : Number,
-  "Basic Oreha Fusion Material" : Number,
-  "Harmony Leapstone" : Number,
-  "Harmony Shard Pouch (M)" : Number,
-  "Life Leapstone" : Number,
-  "Life Shard Pouch (M)" : Number,
-  "Honor Leapstone" : Number,
-  "Honor Shard Pouch (M)" : Number,
-  "Great Honor Leapstone" : Number,
-  "Solar Blessing" : Number,
-  "Star's Breath" : Number,
-  "Harmony Shard Pouch (L)" : Number,
-  "Moon's Breath" : Number,
-  "Life Shard Pouch (L)" : Number,
-  "Honor Shard Pouch (L)" : Number,
-  "Solar Protection" : Number
-  });
+    "id" : String,
+    "crystal" : Number,
+    "i1" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i2" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i3" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i4" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i5" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i6" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i7" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i8" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i9" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i10" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i11" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i12" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i13" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i14" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i15" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i16" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i17" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i18" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i19" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i20" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i21" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i22" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i23" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i24" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i25" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i26" : {
+        "name" : String,
+        "price" : Number
+    },
+    "i27" : {
+        "name" : String,
+        "price" : Number
+    }
+});
 const Maris = mongoose.model('Maris', maris);
+
+function ratio(crystalP, itemGP, itemCP){
+  rate = (itemCP*crystalP)/itemGP;
+  return rate;
+}
 
 app.get('/', (req, res) => {
   Maris.find({id:"TEMPO"}, function (err, docs) {
-    console.log(err);
     docs = docs[0];
-    console.log(docs["Moon's Breath"]);
     res.send(docs);
   });
 })
@@ -91,7 +175,7 @@ app.get('/shop', (req, res) => {
       console.log(err);
     }
     const tmpObj = docs[0];
-    res.render("shop", {data: tmpObj});
+    res.render("shop", {data: tmpObj, calFunc: ratio});
   });
 })
 

@@ -12,10 +12,12 @@ table, th, td {
          $("#ajaxBtn").click(function(){
            $.ajax({
              type:"get",
-             url:"https://marishop.herokuapp.com/",
+             //url:"https://marishop.herokuapp.com/",
+             url:"http://localhost:3000/",
              dataType:"json",
              success:function(res){//result변수로 응답정보가 전달됨
                console.log(res);
+               var cryP = res['crystal']/95
                $("#1").text('Destruction Stone Fragment: ' + res["Moon's Breath"]);
              }
            });//ajax
@@ -25,120 +27,192 @@ table, th, td {
      <title>ratio</title>
   </head>
   <body>
-    <button id="ajaxBtn">Press</button>
+    <button id="ajaxBtn">Refresh</button>
+    <br>gold price per 1 crystal: <%= cryP = data['crystal']/95 %>
     <table style="width:100%">
       <tr>
         <th>item</th>
-        <th>price</th>
+        <th>gold price</th>
+        <th>quantity</th>
+        <th>crystal price</th>
+        <th>Mari : Auction (times Mari shop is expensive)</th>
       </tr>
       <tr>
-        <td id="Destruction Stone Fragment">Destruction Stone Fragment</td>
-        <td id="Destruction Stone FragmentP"> <%= data["Destruction Stone Fragment"] %> </td>
+        <td id="i1"><%= data.i1["name"] %></td>
+        <td id="Destruction Stone FragmentP"> <%= data.i1["price"] %> </td>
+        <td>600</td>
+        <td>120</td>
+        <td id="Destruction Stone FragmentR"> <%= calFunc(cryP, data.i1["price"]/10, 120/600) %> </td>
       </tr>
+      <!--
       <tr>
-        <td id="Guardian Stone Fragment">Guardian Stone Fragment</td>
+        <td id="i2">Guardian Stone Fragment</td>
         <td id="Guardian Stone FragmentP"> <%= data["Guardian Stone Fragment"] %> </td>
+        <td>1000</td>
+        <td>75</td>
+        <td id="Guardian Stone FragmentR"> <%= calFunc(cryP, data["Guardian Stone Fragment"]/10, 1000/75) %> </td>
       </tr>
       <tr>
-        <td id="Destruction Stone">Destruction Stone</td>
+        <td id="i3">Destruction Stone</td>
         <td id="Destruction StoneP"> <%= data["Destruction Stone"] %> </td>
+        <td>300</td>
+        <td>90</td>
+        <td id="Destruction StoneR"> <%= calFunc(cryP, data["Destruction Stone"]/10, 300/90) %> </td>
       </tr>
       <tr>
-        <td id="Guardian Stone">Guardian Stone</td>
+        <td id="i4">Guardian Stone</td>
         <td id="Guardian StoneP"> <%= data["Guardian Stone"] %> </td>
+        <td>1000</td>
+        <td>150</td>
+        <td id="Guardian StoneR"> <%= calFunc(cryP, data["Guardian Stone"]/10, 1000/150) %> </td>
       </tr>
       <tr>
-        <td id="Guardian Stone Crystal">Guardian Stone Crystal</td>
+        <td id="i5">Guardian Stone Crystal</td>
         <td id="Guardian Stone CrystalP"> <%= data["Guardian Stone Crystal"] %> </td>
+        <td>1000</td>
+        <td>270</td>
+        <td id="Guardian Stone CrystalR"> <%= calFunc(cryP, data["Guardian Stone Crystal"]/10, 1000/270) %> </td>
       </tr>
       <tr>
-        <td id="Destruction Stone Crystal">Destruction Stone Crystal</td>
+        <td id="i6">Destruction Stone Crystal</td>
         <td id="Destruction Stone CrystalP"> <%= data["Destruction Stone Crystal"] %> </td>
+        <td>500</td>
+        <td>300</td>
+        <td id="Destruction Stone CrystalR"> <%= calFunc(cryP, data["Destruction Stone Crystal"]/10, 500/300) %> </td>
       </tr>
       <tr>
-        <td id="Simple Oreha Fusion Material">Simple Oreha Fusion Material</td>
+        <td id="i7">Simple Oreha Fusion Material</td>
         <td id="Simple Oreha Fusion MaterialP"> <%= data["Simple Oreha Fusion Material"] %> </td>
+        <td>20</td>
+        <td>54</td>
+        <td id="Simple Oreha Fusion MaterialR"> <%= calFunc(cryP, data["Simple Oreha Fusion Material"], 20/54) %> </td>
       </tr>
       <tr>
-        <td id="Harmony Shard Pouch (S)">Harmony Shard Pouch (S)</td>
+        <td id="i8">Harmony Shard Pouch (S)</td>
         <td id="Harmony Shard Pouch (S)P"> <%= data["Harmony Shard Pouch (S)"] %> </td>
+        <td>NA</td>
+        <td>NA</td>
+        <td>NA</td>
       </tr>
       <tr>
-        <td id="Life Shard Pouch (S)">Life Shard Pouch (S)</td>
+        <td id="i9">Life Shard Pouch (S)</td>
         <td id="Life Shard Pouch (S)P"> <%= data["Life Shard Pouch (S)"] %> </td>
+        <td>20</td>
+        <td>75</td>
+        <td id="Life Shard Pouch (S)R"> <%= calFunc(cryP, data["Life Shard Pouch (S)"], 20/75) %> </td>
       </tr>
       <tr>
-        <td id="Honor Shard Pouch (S)">Honor Shard Pouch (S)</td>
+        <td id="i10">Honor Shard Pouch (S)</td>
         <td id="Honor Shard Pouch (S)P"> <%= data["Honor Shard Pouch (S)"] %> </td>
+        <td>20</td>
+        <td>112</td>
+        <td id="Honor Shard Pouch (S)R"> <%= calFunc(cryP, data["Honor Shard Pouch (S)"], 20/112) %> </td>
       </tr>
       <tr>
-        <td id="Solar Grace">Solar Grace</td>
+        <td id="i11">Solar Grace</td>
         <td id="Solar GraceP"> <%= data["Solar Grace"] %> </td>
+        <td>40</td>
+        <td>160</td>
+        <td id="Solar GraceR"> <%= calFunc(cryP, data["Solar Grace"], 40/160) %> </td>
       </tr>
       <tr>
-        <td id="Caldarr Fusion Material">Caldarr Fusion Material</td>
+        <td id="i12">Caldarr Fusion Material</td>
         <td id="Caldarr Fusion MaterialP"> <%= data["Caldarr Fusion Material"] %> </td>
+        <td>15</td>
+        <td>60</td>
+        <td id="Caldarr Fusion MaterialR"> <%= calFunc(cryP, data["Caldarr Fusion Material"], 15/60) %> </td>
       </tr>
       <tr>
-        <td id="Basic Oreha Fusion Material">Basic Oreha Fusion Material</td>
+        <td id="i13">Basic Oreha Fusion Material</td>
         <td id="Basic Oreha Fusion MaterialP"> <%= data["Basic Oreha Fusion Material"] %> </td>
+        <td>20</td>
+        <td>72</td>
       </tr>
       <tr>
-        <td id="Harmony Leapstone">Harmony Leapstone</td>
+        <td id="i14">Harmony Leapstone</td>
         <td id="Harmony LeapstoneP"> <%= data["Harmony Leapstone"] %> </td>
+        <td>30</td>
+        <td>30</td>
       </tr>
       <tr>
-        <td id="Harmony Shard Pouch (M)">Harmony Shard Pouch (M)</td>
+        <td id="i15">Harmony Shard Pouch (M)</td>
         <td id="Harmony Shard Pouch (M)P"> <%= data["Harmony Shard Pouch (M)"] %> </td>
+        <td>15</td>
+        <td>141</td>
       </tr>
       <tr>
-        <td id="Life Leapstone">Life Leapstone</td>
+        <td id="i16">Life Leapstone</td>
         <td id="Life LeapstoneP"> <%= data["Life Leapstone"] %> </td>
+        <td>40</td>
+        <td>56</td>
       </tr>
       <tr>
-        <td id="Life Shard Pouch (M)">Life Shard Pouch (M)</td>
+        <td id="i17">Life Shard Pouch (M)</td>
         <td id="Life Shard Pouch (M)P"> <%= data["Life Shard Pouch (M)"] %> </td>
+        <td>NA</td>
+        <td>NA</td>
       </tr>
       <tr>
-        <td id="Honor Leapstone">Honor Leapstone</td>
+        <td id="i18">Honor Leapstone</td>
         <td id="Honor LeapstoneP"> <%= data["Honor Leapstone"] %> </td>
+        <td>20</td>
+        <td>40</td>
       </tr>
       <tr>
-        <td id="Honor Shard Pouch (M)">Honor Shard Pouch (M)</td>
+        <td id="i19">Honor Shard Pouch (M)</td>
         <td id="Honor Shard Pouch (M)P"> <%= data["Honor Shard Pouch (M)"] %> </td>
+        <td>NA</td>
+        <td>NA</td>
       </tr>
       <tr>
-        <td id="Great Honor Leapstone">Great Honor Leapstone</td>
+        <td id="i20">Great Honor Leapstone</td>
         <td id="Great Honor LeapstoneP"> <%= data["Great Honor Leapstone"] %> </td>
+        <td>5</td>
+        <td>50</td>
       </tr>
       <tr>
-        <td id="Solar Blessing">Solar Blessing</td>
+        <td id="i21">Solar Blessing</td>
         <td id="Solar BlessingP"> <%= data["Solar Blessing"] %> </td>
+        <td>30</td>
+        <td>300</td>
       </tr>
       <tr>
-        <td id="Star's Breath">Star's Breath</td>
+        <td id="i22">Star's Breath</td>
         <td id="Star's BreathP"> <%= data["Star's Breath"] %> </td>
+        <td>15</td>
+        <td>30</td>
       </tr>
       <tr>
-        <td id="Harmony Shard Pouch (L)">Harmony Shard Pouch (L)</td>
+        <td id="i23">Harmony Shard Pouch (L)</td>
         <td id="Harmony Shard Pouch (L)P"> <%= data["Harmony Shard Pouch (L)"] %> </td>
+        <td>NA</td>
+        <td>NA</td>
       </tr>
       <tr>
-        <td id="Moon's Breath">Moon's Breath</td>
+        <td id="i24">Moon's Breath</td>
         <td id="Moon's BreathP"> <%= data["Moon's Breath"] %> </td>
+        <td>10</td>
+        <td>30</td>
       </tr>
       <tr>
-        <td id="Life Shard Pouch (L)">Life Shard Pouch (L)</td>
+        <td id="i25">Life Shard Pouch (L)</td>
         <td id="Life Shard Pouch (L)P"> <%= data["Life Shard Pouch (L)"] %> </td>
+        <td>NA</td>
+        <td>NA</td>
       </tr>
       <tr>
-        <td id="Honor Shard Pouch (L)">Honor Shard Pouch (L)</td>
+        <td id="i26">Honor Shard Pouch (L)</td>
         <td id="Honor Shard Pouch (L)P"> <%= data["Honor Shard Pouch (L)"] %> </td>
+        <td>NA</td>
+        <td>NA</td>
       </tr>
       <tr>
-        <td id="Solar Protection">Solar Protection</td>
+        <td id="i27">Solar Protection</td>
         <td id="Solar ProtectionP"> <%= data["Solar Protection"] %> </td>
+        <td>8</td>
+        <td>360</td>
       </tr>
+    -->
     </table>
   </body>
 </html>
