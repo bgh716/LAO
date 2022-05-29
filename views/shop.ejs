@@ -7,18 +7,31 @@ table, th, td {
 </style>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    function ratio(crystalP, itemGP, itemCP){
+      rate = (itemCP*crystalP)/itemGP;
+      return rate;
+    }
+  </script>
     <script type="text/javascript">
 	     $(document).ready(function() {
          $("#ajaxBtn").click(function(){
            $.ajax({
              type:"get",
-             //url:"https://marishop.herokuapp.com/",
-             url:"http://localhost:3000/",
+             url:"https://marishop.herokuapp.com/",
+             //url:"http://localhost:3000/",
              dataType:"json",
              success:function(res){//result변수로 응답정보가 전달됨
-               console.log(res);
-               var cryP = res['crystal']/95
-               $("#1").text('Destruction Stone Fragment: ' + res["Moon's Breath"]);
+               const cryP = res['crystal']/95
+               const info  = <%-JSON.stringify(info)%>
+               const items = 27
+               const ids = ["i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12",
+               "i13","i14","i15","i16","i17","i18","i19","i20","i21","i22",'i23',"i24","i25","i26","i27"]
+               const calFunc = <%= calFunc %>
+               for(var i =0; i<items; i++){
+                 $("#" + ids[i] +"P").text(res[ids[i]]["price"]);
+                 $("#" + ids[i] +"R").text( calFunc(cryP, res[ids[i]]["price"]/info[ids[i]]["bundle"], info[ids[i]]["cprice"]/info[ids[i]]["quantity"]));
+               }
              }
            });//ajax
          });//click
@@ -44,175 +57,188 @@ table, th, td {
         <td><%= info.i1["cprice"] %></td>
         <td id="i1R"> <%= calFunc(cryP, data.i1["price"]/info.i1["bundle"], info.i1["cprice"]/info.i1["quantity"]) %> </td>
       </tr>
-      <!--
       <tr>
-        <td id="i2">Guardian Stone Fragment</td>
-        <td id="Guardian Stone FragmentP"> <%= data["Guardian Stone Fragment"] %> </td>
-        <td>1000</td>
-        <td>75</td>
-        <td id="Guardian Stone FragmentR"> <%= calFunc(cryP, data["Guardian Stone Fragment"]/10, 1000/75) %> </td>
+        <td id="i2"><%= data.i2["name"] %></td>
+        <td id="i2P"> <%= data.i2["price"] %> </td>
+        <td><%= info.i2["quantity"] %></td>
+        <td><%= info.i2["cprice"] %></td>
+        <td id="i2R"> <%= calFunc(cryP, data.i2["price"]/info.i2["bundle"], info.i2["cprice"]/info.i2["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i3">Destruction Stone</td>
-        <td id="Destruction StoneP"> <%= data["Destruction Stone"] %> </td>
-        <td>300</td>
-        <td>90</td>
-        <td id="Destruction StoneR"> <%= calFunc(cryP, data["Destruction Stone"]/10, 300/90) %> </td>
+        <td id="i3"><%= data.i3["name"] %></td>
+        <td id="i3P"> <%= data.i3["price"] %> </td>
+        <td><%= info.i3["quantity"] %></td>
+        <td><%= info.i3["cprice"] %></td>
+        <td id="i3R"> <%= calFunc(cryP, data.i3["price"]/info.i3["bundle"], info.i3["cprice"]/info.i3["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i4">Guardian Stone</td>
-        <td id="Guardian StoneP"> <%= data["Guardian Stone"] %> </td>
-        <td>1000</td>
-        <td>150</td>
-        <td id="Guardian StoneR"> <%= calFunc(cryP, data["Guardian Stone"]/10, 1000/150) %> </td>
+        <td id="i4"><%= data.i4["name"] %></td>
+        <td id="i4P"> <%= data.i4["price"] %> </td>
+        <td><%= info.i4["quantity"] %></td>
+        <td><%= info.i4["cprice"] %></td>
+        <td id="i4R"> <%= calFunc(cryP, data.i4["price"]/info.i4["bundle"], info.i4["cprice"]/info.i4["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i5">Guardian Stone Crystal</td>
-        <td id="Guardian Stone CrystalP"> <%= data["Guardian Stone Crystal"] %> </td>
-        <td>1000</td>
-        <td>270</td>
-        <td id="Guardian Stone CrystalR"> <%= calFunc(cryP, data["Guardian Stone Crystal"]/10, 1000/270) %> </td>
+        <td id="i5"><%= data.i5["name"] %></td>
+        <td id="i5P"> <%= data.i5["price"] %> </td>
+        <td><%= info.i5["quantity"] %></td>
+        <td><%= info.i5["cprice"] %></td>
+        <td id="i5R"> <%= calFunc(cryP, data.i5["price"]/info.i5["bundle"], info.i5["cprice"]/info.i5["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i6">Destruction Stone Crystal</td>
-        <td id="Destruction Stone CrystalP"> <%= data["Destruction Stone Crystal"] %> </td>
-        <td>500</td>
-        <td>300</td>
-        <td id="Destruction Stone CrystalR"> <%= calFunc(cryP, data["Destruction Stone Crystal"]/10, 500/300) %> </td>
+        <td id="i6"><%= data.i6["name"] %></td>
+        <td id="i6P"> <%= data.i6["price"] %> </td>
+        <td><%= info.i6["quantity"] %></td>
+        <td><%= info.i6["cprice"] %></td>
+        <td id="i6R"> <%= calFunc(cryP, data.i6["price"]/info.i6["bundle"], info.i6["cprice"]/info.i6["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i7">Simple Oreha Fusion Material</td>
-        <td id="Simple Oreha Fusion MaterialP"> <%= data["Simple Oreha Fusion Material"] %> </td>
-        <td>20</td>
-        <td>54</td>
-        <td id="Simple Oreha Fusion MaterialR"> <%= calFunc(cryP, data["Simple Oreha Fusion Material"], 20/54) %> </td>
+        <td id="i7"><%= data.i7["name"] %></td>
+        <td id="i7P"> <%= data.i7["price"] %> </td>
+        <td><%= info.i7["quantity"] %></td>
+        <td><%= info.i7["cprice"] %></td>
+        <td id="i7R"> <%= calFunc(cryP, data.i7["price"]/info.i7["bundle"], info.i7["cprice"]/info.i7["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i8">Harmony Shard Pouch (S)</td>
-        <td id="Harmony Shard Pouch (S)P"> <%= data["Harmony Shard Pouch (S)"] %> </td>
-        <td>NA</td>
-        <td>NA</td>
-        <td>NA</td>
+        <td id="i8"><%= data.i8["name"] %></td>
+        <td id="i8P"> <%= data.i8["price"] %> </td>
+        <td><%= info.i8["quantity"] %></td>
+        <td><%= info.i8["cprice"] %></td>
+        <td id="i8R"> <%= calFunc(cryP, data.i8["price"]/info.i8["bundle"], info.i8["cprice"]/info.i8["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i9">Life Shard Pouch (S)</td>
-        <td id="Life Shard Pouch (S)P"> <%= data["Life Shard Pouch (S)"] %> </td>
-        <td>20</td>
-        <td>75</td>
-        <td id="Life Shard Pouch (S)R"> <%= calFunc(cryP, data["Life Shard Pouch (S)"], 20/75) %> </td>
+        <td id="i9"><%= data.i9["name"] %></td>
+        <td id="i9P"> <%= data.i9["price"] %> </td>
+        <td><%= info.i9["quantity"] %></td>
+        <td><%= info.i9["cprice"] %></td>
+        <td id="i9R"> <%= calFunc(cryP, data.i9["price"]/info.i9["bundle"], info.i9["cprice"]/info.i9["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i10">Honor Shard Pouch (S)</td>
-        <td id="Honor Shard Pouch (S)P"> <%= data["Honor Shard Pouch (S)"] %> </td>
-        <td>20</td>
-        <td>112</td>
-        <td id="Honor Shard Pouch (S)R"> <%= calFunc(cryP, data["Honor Shard Pouch (S)"], 20/112) %> </td>
+        <td id="i10"><%= data.i10["name"] %></td>
+        <td id="i10P"> <%= data.i10["price"] %> </td>
+        <td><%= info.i10["quantity"] %></td>
+        <td><%= info.i10["cprice"] %></td>
+        <td id="i10R"> <%= calFunc(cryP, data.i10["price"]/info.i10["bundle"], info.i10["cprice"]/info.i10["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i11">Solar Grace</td>
-        <td id="Solar GraceP"> <%= data["Solar Grace"] %> </td>
-        <td>40</td>
-        <td>160</td>
-        <td id="Solar GraceR"> <%= calFunc(cryP, data["Solar Grace"], 40/160) %> </td>
+        <td id="i11"><%= data.i11["name"] %></td>
+        <td id="i11P"> <%= data.i11["price"] %> </td>
+        <td><%= info.i11["quantity"] %></td>
+        <td><%= info.i11["cprice"] %></td>
+        <td id="i11R"> <%= calFunc(cryP, data.i11["price"]/info.i11["bundle"], info.i11["cprice"]/info.i11["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i12">Caldarr Fusion Material</td>
-        <td id="Caldarr Fusion MaterialP"> <%= data["Caldarr Fusion Material"] %> </td>
-        <td>15</td>
-        <td>60</td>
-        <td id="Caldarr Fusion MaterialR"> <%= calFunc(cryP, data["Caldarr Fusion Material"], 15/60) %> </td>
+        <td id="i12"><%= data.i12["name"] %></td>
+        <td id="i12P"> <%= data.i12["price"] %> </td>
+        <td><%= info.i12["quantity"] %></td>
+        <td><%= info.i12["cprice"] %></td>
+        <td id="i12R"> <%= calFunc(cryP, data.i12["price"]/info.i12["bundle"], info.i12["cprice"]/info.i12["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i13">Basic Oreha Fusion Material</td>
-        <td id="Basic Oreha Fusion MaterialP"> <%= data["Basic Oreha Fusion Material"] %> </td>
-        <td>20</td>
-        <td>72</td>
+        <td id="i13"><%= data.i13["name"] %></td>
+        <td id="i13P"> <%= data.i13["price"] %> </td>
+        <td><%= info.i13["quantity"] %></td>
+        <td><%= info.i13["cprice"] %></td>
+        <td id="i13R"> <%= calFunc(cryP, data.i13["price"]/info.i13["bundle"], info.i13["cprice"]/info.i13["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i14">Harmony Leapstone</td>
-        <td id="Harmony LeapstoneP"> <%= data["Harmony Leapstone"] %> </td>
-        <td>30</td>
-        <td>30</td>
+        <td id="i14"><%= data.i14["name"] %></td>
+        <td id="i14P"> <%= data.i14["price"] %> </td>
+        <td><%= info.i14["quantity"] %></td>
+        <td><%= info.i14["cprice"] %></td>
+        <td id="i14R"> <%= calFunc(cryP, data.i14["price"]/info.i14["bundle"], info.i14["cprice"]/info.i14["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i15">Harmony Shard Pouch (M)</td>
-        <td id="Harmony Shard Pouch (M)P"> <%= data["Harmony Shard Pouch (M)"] %> </td>
-        <td>15</td>
-        <td>141</td>
+        <td id="i15"><%= data.i15["name"] %></td>
+        <td id="i15P"> <%= data.i15["price"] %> </td>
+        <td><%= info.i15["quantity"] %></td>
+        <td><%= info.i15["cprice"] %></td>
+        <td id="i15R"> <%= calFunc(cryP, data.i15["price"]/info.i15["bundle"], info.i15["cprice"]/info.i15["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i16">Life Leapstone</td>
-        <td id="Life LeapstoneP"> <%= data["Life Leapstone"] %> </td>
-        <td>40</td>
-        <td>56</td>
+        <td id="i16"><%= data.i16["name"] %></td>
+        <td id="i16P"> <%= data.i16["price"] %> </td>
+        <td><%= info.i16["quantity"] %></td>
+        <td><%= info.i16["cprice"] %></td>
+        <td id="i16R"> <%= calFunc(cryP, data.i16["price"]/info.i16["bundle"], info.i16["cprice"]/info.i16["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i17">Life Shard Pouch (M)</td>
-        <td id="Life Shard Pouch (M)P"> <%= data["Life Shard Pouch (M)"] %> </td>
-        <td>NA</td>
-        <td>NA</td>
+        <td id="i17"><%= data.i17["name"] %></td>
+        <td id="i17P"> <%= data.i17["price"] %> </td>
+        <td><%= info.i17["quantity"] %></td>
+        <td><%= info.i17["cprice"] %></td>
+        <td id="i17R"> <%= calFunc(cryP, data.i17["price"]/info.i17["bundle"], info.i17["cprice"]/info.i17["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i18">Honor Leapstone</td>
-        <td id="Honor LeapstoneP"> <%= data["Honor Leapstone"] %> </td>
-        <td>20</td>
-        <td>40</td>
+        <td id="i18"><%= data.i18["name"] %></td>
+        <td id="i18P"> <%= data.i18["price"] %> </td>
+        <td><%= info.i18["quantity"] %></td>
+        <td><%= info.i18["cprice"] %></td>
+        <td id="i18R"> <%= calFunc(cryP, data.i18["price"]/info.i18["bundle"], info.i18["cprice"]/info.i18["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i19">Honor Shard Pouch (M)</td>
-        <td id="Honor Shard Pouch (M)P"> <%= data["Honor Shard Pouch (M)"] %> </td>
-        <td>NA</td>
-        <td>NA</td>
+        <td id="i19"><%= data.i19["name"] %></td>
+        <td id="i19P"> <%= data.i19["price"] %> </td>
+        <td><%= info.i19["quantity"] %></td>
+        <td><%= info.i19["cprice"] %></td>
+        <td id="i19R"> <%= calFunc(cryP, data.i19["price"]/info.i19["bundle"], info.i19["cprice"]/info.i19["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i20">Great Honor Leapstone</td>
-        <td id="Great Honor LeapstoneP"> <%= data["Great Honor Leapstone"] %> </td>
-        <td>5</td>
-        <td>50</td>
+        <td id="i20"><%= data.i20["name"] %></td>
+        <td id="i20P"> <%= data.i20["price"] %> </td>
+        <td><%= info.i20["quantity"] %></td>
+        <td><%= info.i20["cprice"] %></td>
+        <td id="i20R"> <%= calFunc(cryP, data.i20["price"]/info.i20["bundle"], info.i20["cprice"]/info.i20["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i21">Solar Blessing</td>
-        <td id="Solar BlessingP"> <%= data["Solar Blessing"] %> </td>
-        <td>30</td>
-        <td>300</td>
+        <td id="i21"><%= data.i21["name"] %></td>
+        <td id="i21P"> <%= data.i21["price"] %> </td>
+        <td><%= info.i21["quantity"] %></td>
+        <td><%= info.i21["cprice"] %></td>
+        <td id="i21R"> <%= calFunc(cryP, data.i21["price"]/info.i21["bundle"], info.i21["cprice"]/info.i21["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i22">Star's Breath</td>
-        <td id="Star's BreathP"> <%= data["Star's Breath"] %> </td>
-        <td>15</td>
-        <td>30</td>
+        <td id="i22"><%= data.i22["name"] %></td>
+        <td id="i22P"> <%= data.i22["price"] %> </td>
+        <td><%= info.i22["quantity"] %></td>
+        <td><%= info.i22["cprice"] %></td>
+        <td id="i22R"> <%= calFunc(cryP, data.i22["price"]/info.i22["bundle"], info.i22["cprice"]/info.i22["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i23">Harmony Shard Pouch (L)</td>
-        <td id="Harmony Shard Pouch (L)P"> <%= data["Harmony Shard Pouch (L)"] %> </td>
-        <td>NA</td>
-        <td>NA</td>
+        <td id="i23"><%= data.i23["name"] %></td>
+        <td id="i23P"> <%= data.i23["price"] %> </td>
+        <td><%= info.i23["quantity"] %></td>
+        <td><%= info.i23["cprice"] %></td>
+        <td id="i23R"> <%= calFunc(cryP, data.i23["price"]/info.i23["bundle"], info.i23["cprice"]/info.i23["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i24">Moon's Breath</td>
-        <td id="Moon's BreathP"> <%= data["Moon's Breath"] %> </td>
-        <td>10</td>
-        <td>30</td>
+        <td id="i24"><%= data.i24["name"] %></td>
+        <td id="i24P"> <%= data.i24["price"] %> </td>
+        <td><%= info.i24["quantity"] %></td>
+        <td><%= info.i24["cprice"] %></td>
+        <td id="i24R"> <%= calFunc(cryP, data.i24["price"]/info.i24["bundle"], info.i24["cprice"]/info.i24["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i25">Life Shard Pouch (L)</td>
-        <td id="Life Shard Pouch (L)P"> <%= data["Life Shard Pouch (L)"] %> </td>
-        <td>NA</td>
-        <td>NA</td>
+        <td id="i25"><%= data.i25["name"] %></td>
+        <td id="i25P"> <%= data.i25["price"] %> </td>
+        <td><%= info.i25["quantity"] %></td>
+        <td><%= info.i25["cprice"] %></td>
+        <td id="i25R"> <%= calFunc(cryP, data.i25["price"]/info.i25["bundle"], info.i25["cprice"]/info.i25["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i26">Honor Shard Pouch (L)</td>
-        <td id="Honor Shard Pouch (L)P"> <%= data["Honor Shard Pouch (L)"] %> </td>
-        <td>NA</td>
-        <td>NA</td>
+        <td id="i26"><%= data.i26["name"] %></td>
+        <td id="i26P"> <%= data.i26["price"] %> </td>
+        <td><%= info.i26["quantity"] %></td>
+        <td><%= info.i26["cprice"] %></td>
+        <td id="i26R"> <%= calFunc(cryP, data.i26["price"]/info.i26["bundle"], info.i26["cprice"]/info.i26["quantity"]) %> </td>
       </tr>
       <tr>
-        <td id="i27">Solar Protection</td>
-        <td id="Solar ProtectionP"> <%= data["Solar Protection"] %> </td>
-        <td>8</td>
-        <td>360</td>
+        <td id="i27"><%= data.i27["name"] %></td>
+        <td id="i27P"> <%= data.i27["price"] %> </td>
+        <td><%= info.i27["quantity"] %></td>
+        <td><%= info.i27["cprice"] %></td>
+        <td id="i27R"> <%= calFunc(cryP, data.i27["price"]/info.i27["bundle"], info.i27["cprice"]/info.i27["quantity"]) %> </td>
       </tr>
-    -->
     </table>
   </body>
 </html>
