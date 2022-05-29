@@ -10,6 +10,7 @@ app.set("views", "./views");
 
 //MONGOOSE CONNECTION
 const mongoose = require('mongoose')
+const dbcode = fs.readFileSync("temp/jsdb.txt", "utf8")
 mongoose.connect(
   "mongodb+srv://Mushroom:TEMPO@lao.zskci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
@@ -27,21 +28,6 @@ const handleError = (error) => {
 };
 db.once("open", handleOpen);
 db.on("error", handleError);
-/* MONGODB CONNECTION
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://Mushroom:TEMPO@lao.zskci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
-client.connect(err => {
-  const collection = client.db("LAO").collection("maris");
-  // perform actions on the collection object
-  collection.findOne({id:"TEMPO"}, function(err, doc) {
-        console.log(err);
-        console.log(doc);
-  });
-  //client.close();
-});
-*/
 
 var maris = mongoose.Schema({
     "id" : String,
@@ -156,8 +142,6 @@ var maris = mongoose.Schema({
     }
 });
 const Maris = mongoose.model('Maris', maris);
-const ids = ["i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12",
-"i13","i14","i15","i16","i17","i18","i19","i20","i21","i22",'i23',"i24","i25","i26","i27"]
 
 function ratio(crystalP, itemGP, itemCP){
   rate = (itemCP*crystalP)/itemGP;
