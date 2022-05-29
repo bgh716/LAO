@@ -1,0 +1,164 @@
+{
+	"i1": {
+		"name": "Destruction Stone Fragment",
+		"quantity": 600,
+		"cprice": 120,
+		"bundle": 10
+	},
+	"i2": {
+		"name": "Guardian Stone Fragment",
+		"quantity": 1000,
+		"cprice": 75,
+		"bundle": 10
+	},
+	"i3": {
+		"name": "Destruction Stone",
+		"quantity": 300,
+		"cprice": 90,
+		"bundle": 10
+	},
+	"i4": {
+		"name": "Guardian Stone",
+		"quantity": 1000,
+		"cprice": 150,
+		"bundle": 10
+	},
+	"i5": {
+		"name": "Guardian Stone Crystal",
+		"quantity": 1000,
+		"cprice": 270,
+		"bundle": 10
+	},
+	"i6": {
+		"name": "Destruction Stone Crystal",
+		"quantity": 500,
+		"cprice": 300,
+		"bundle": 10
+	},
+	"i7": {
+		"name": "Simple Oreha Fusion Material",
+		"quantity": 20,
+		"cprice": 54,
+		"bundle": 1
+	},
+	"i8": {
+		"name": "Harmony Shard Pouch (S)",
+		"quantity": 0,
+		"cprice": 0,
+		"bundle": 1
+	},
+	"i9": {
+		"name": "Life Shard Pouch (S)",
+		"quantity": 20,
+		"cprice": 75,
+		"bundle": 1
+	},
+	"i10": {
+		"name": "Solar Grace",
+		"quantity": 40,
+		"cprice": 160,
+		"bundle": 1
+	},
+	"i11": {
+		"name": "Honor Shard Pouch (S)",
+		"quantity": 20,
+		"cprice": 112,
+		"bundle": 1
+	},
+	"i12": {
+		"name": "Caldarr Fusion Material",
+		"quantity": 15,
+		"cprice": 60,
+		"bundle": 1
+	},
+	"i13": {
+		"name": "Basic Oreha Fusion Material",
+		"quantity": 20,
+		"cprice": 72,
+		"bundle": 1
+	},
+	"i14": {
+		"name": "Harmony Leapstone",
+		"quantity": 30,
+		"cprice": 30,
+		"bundle": 1
+	},
+	"i15": {
+		"name": "Harmony Shard Pouch (M)",
+		"quantity": 15,
+		"cprice": 141,
+		"bundle": 1
+	},
+	"i16": {
+		"name": "Life Leapstone",
+		"quantity": 40,
+		"cprice": 56,
+		"bundle": 1
+	},
+	"i17": {
+		"name": "Life Shard Pouch (M)",
+		"quantity": 0,
+		"cprice": 0,
+		"bundle": 1
+	},
+	"i18": {
+		"name": "Honor Leapstone",
+		"quantity": 20,
+		"cprice": 40,
+		"bundle": 1
+	},
+	"i19": {
+		"name": "Honor Shard Pouch (M)",
+		"quantity": 0,
+		"cprice": 0,
+		"bundle": 1
+	},
+	"i20": {
+		"name": "Solar Blessing",
+		"quantity": 30,
+		"cprice": 300,
+		"bundle": 1
+	},
+	"i21": {
+		"name": "Great Honor Leapstone",
+		"quantity": 5,
+		"cprice": 50,
+		"bundle": 1
+	},
+	"i22": {
+		"name": "Star's Breath",
+		"quantity": 15,
+		"cprice": 30,
+		"bundle": 1
+	},
+	"i23": {
+		"name": "Harmony Shard Pouch (L)",
+		"quantity": 0,
+		"cprice": 0,
+		"bundle": 1
+	},
+	"i24": {
+		"name": "Moon's Breath",
+		"quantity": 10,
+		"cprice": 30,
+		"bundle": 1
+	},
+	"i25": {
+		"name": "Life Shard Pouch (L)",
+		"quantity": 0,
+		"cprice": 0,
+		"bundle": 1
+	},
+	"i26": {
+		"name": "Honor Shard Pouch (L)",
+		"quantity": 0,
+		"cprice": 0,
+		"bundle": 1
+	},
+	"i27": {
+		"name": "Solar Protection",
+		"quantity": 8,
+		"cprice": 360,
+		"bundle": 1
+	}
+}

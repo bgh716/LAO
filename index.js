@@ -12,7 +12,7 @@ app.set("views", "./views");
 const mongoose = require('mongoose')
 const dbcode = fs.readFileSync("temp/jsdb.txt", "utf8")
 mongoose.connect(
-  dbcode,
+  "mongodb+srv://Mushroom:TEMPO@lao.zskci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
